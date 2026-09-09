@@ -76,7 +76,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Monospace-8'"
 
 #bindsym $mod+d exec "rofi -modi drun,run -show drun"
-#bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/launchers/type-1/style-3.rasi
+#bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/i3/rofi-config/launchers/type-1/style-3.rasi
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
@@ -216,7 +216,7 @@ client.background       #000000
 # finds out, if available)
 bar {
 	status_command i3status -c ~/.config/i3/i3status.conf
-	position top
+	position bottom
 	#separator_symbol " "
 	height 22		
 
