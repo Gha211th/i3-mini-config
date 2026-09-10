@@ -63,17 +63,18 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec xfce4-terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec xfce4-terminal
+#bindsym $mod+Return exec kitty
 bindsym $mod+u exec Files
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# App Launcer Settings
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#005577' -sf '#EEEEEE' -fn 'monospace-10'"
 #A more modern dmenu replacement is rofi:
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Monospace-8'"
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Fira Code-8' -nb '#000000' -nf '#FFFFFF' -sb '#FFFFFF' -sf '#000000'"
 
 #bindsym $mod+d exec "rofi -modi drun,run -show drun"
 #bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/i3/rofi-config/launchers/type-1/style-3.rasi
@@ -212,13 +213,15 @@ client.placeholder      #000000 #0C0C0C #000000 #000000   #0C0C0C
 
 client.background       #000000
 
+# BAR SETTINGS (i3status/polybar)
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
 	status_command i3status -c ~/.config/i3/i3status.conf
 	position bottom
 	#separator_symbol " "
-	height 22		
+#	height 30
+  padding 2px 20px 2px 20px
 
 	colors {
 		statusline	#FFFFFF
@@ -237,14 +240,16 @@ bar {
 
 #BACKGROUND SETTINGS
 #exec_always --no-startup-id feh --bg-scale /home/gha211th/Pictures/wallpapers/tower_power.jpg
-
 default_border pixel 1
 
-#gaps config
-gaps inner 15
+#WINDOW GAPS Config
+gaps inner 10
 gaps outer 2
 
 #CUSTOM WINDOW MANAGEMENT
+#Instruction:
+# > for_window [class="your_window_class"] floating/other enable/disable, resize width_size height_size, move position center
+# > IMPORTANT: scaling the size its optional
 for_window [class="nmgui"] floating enable, move position center
 for_window [class="Blueman-manager"] floating enable, resize set 600 600, move position center
 for_window [class="kitty"] floating enable, resize set 750 450, move position center
@@ -252,12 +257,13 @@ for_window [class="kitty"] floating enable, resize set 750 450, move position ce
 for_window [class="Nemo"] floating enable, rezise aset 500 400, move position center
 for_window [class="code"] floating enable, rezise aset 720 720, move position center
 
-#autolock i3lock
+#AUTOLOCK i3Lock (Disable)
 #exec --no-startup-id xautolock -time 5 -locker "~/lock.sh"
 
-#lockscreen shortcut
+#Lock Screen Shortcut
 bindsym $mod+q exec --no-startup-id ~/lock.sh
 
-#exec --no-startup-id xrandr --output eDP-1 --primary --auto --output HDMI-1 --auto --right-of eDP-1
-exec --no-startup-id xrandr --output eDP-1 --auto --output HDMI-1 --auto --same-as eDP-1
+# MULTIPLE SCREEN USING xrandr (See the documentation)
+#exec --no-startup-id xrandr --output eDP-1 --primary --auto --output HDMI-1 --auto --right-of eDP-1 # > extend Monitor
+exec --no-startup-id xrandr --output eDP-1 --auto --output HDMI-1 --auto --same-as eDP-1 # > Duplicate monitor
 
